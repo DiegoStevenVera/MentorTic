@@ -27,6 +27,14 @@ urlpatterns = [
                       "api/v1/users/",
                       include("apps.users.urls", namespace="users"),
                   ),
+                  path(
+                      "api/v1/mentors/",
+                      include("apps.mentor.urls", namespace="mentors")
+                  ),
+                  path(
+                      "api/v1/competencias/",
+                      include("apps.competencia.urls", namespace="competencias")
+                  ),
                   path("auth", include('rest_framework_social_oauth2.urls')),
                   re_path(r'^swagger(?P<format>\.json|\.yaml)/$', schema_view.without_ui(cache_timeout=None),
                           name='schema-json'),

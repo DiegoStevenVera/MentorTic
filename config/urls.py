@@ -35,6 +35,10 @@ urlpatterns = [
                       "api/v1/competencias/",
                       include("apps.competencia.urls", namespace="competencias")
                   ),
+                  path(
+                      "api/v1/entidades/",
+                      include("apps.entidad.urls", namespace="entidades")
+                  ),
                   path("auth", include('rest_framework_social_oauth2.urls')),
                   re_path(r'^swagger(?P<format>\.json|\.yaml)/$', schema_view.without_ui(cache_timeout=None),
                           name='schema-json'),

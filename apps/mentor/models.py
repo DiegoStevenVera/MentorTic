@@ -14,7 +14,7 @@ class Mentor(models.Model):
     DNIUpline = models.IntegerField('DNIUpline', null=False)
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True,
                               choices=[(item.name, item.value) for item in Tipo])
-    mentor = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='mentores')
+    mentor = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='Mentor')
     idUser = models.OneToOneField(User, on_delete=models.CASCADE, related_name='mentor')
 
     def __str__(self):

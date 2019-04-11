@@ -10,7 +10,7 @@ class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id','DNI', 'DNIUpline', 'tipo', 'mentores', 'idUser'
+            'id','DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser'
         )
 
 
@@ -18,7 +18,7 @@ class MentorCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id','DNI', 'DNIUpline', 'tipo', 'mentores', 'idUser'
+            'id','DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser'
         )
 
 
@@ -47,5 +47,5 @@ class MentorSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'DNIUpline', 'tipo', 'mentores', 'idUser', 'mentoria'
+            'id', 'DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser', 'mentoria'
         )

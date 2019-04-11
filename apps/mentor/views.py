@@ -1,17 +1,16 @@
 from rest_framework import generics
 
-from apps.mentor.models import Mentor
 from apps.mentor.serializers import *
 
 
-class MentorListView(generics.ListAPIView):
+class MentorListView(generics.ListCreateAPIView):
     queryset = Mentor.objects.all()
-    serializer_class = MentorSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MentorSerializer
 
-class MentorCreateView(generics.CreateAPIView):
-    queryset = Mentor.objects.all()
-    serializer_class = MentorCreateSerializer
+        return MentorCreateSerializer
 
 
 class MentorRUDView(generics.RetrieveUpdateDestroyAPIView):

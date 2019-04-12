@@ -10,7 +10,7 @@ class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id','DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser'
+            'id','DNI', 'DNIUpline', 'tipo','mentorPadre', 'Mentores', 'idUser', 'created_at','last_modified'
         )
 
 
@@ -18,24 +18,45 @@ class MentorCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id','DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser'
+            'id','DNI', 'DNIUpline', 'tipo', 'mentorPadre', 'idUser', 'created_at','last_modified'
+        )
+
+
+class MentorgetSerializer(serializers.ModelSerializer):
+    idUser = RetrieveUserSerializer(read_only=True)
+
+    class Meta:
+        model = Mentor
+        fields = (
+            'id', 'DNI', 'DNIUpline', 'tipo', 'idUser'
         )
 
 
 class MentoriaSerializer(serializers.ModelSerializer):
+    mentor = MentorgetSerializer()
+
     class Meta:
         model = Mentoria
         fields = (
-            'id', 'mentor', 'fecha'
+            'id', 'mentor', 'fecha', 'created_at','last_modified'
         )
         read_only_fields = ('id',)
+
+
+class MentoriaCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mentoria
+        fields = (
+            'id', 'mentor', 'fecha', 'created_at', 'last_modified'
+        )
+        read_only_fields = ("id",)
 
 
 class MentoriaGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentoria
         fields = (
-            'id', 'fecha'
+            'id', 'fecha', 'created_at','last_modified'
         )
         read_only_fields = ('id',)
 
@@ -47,5 +68,5 @@ class MentorSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'DNIUpline', 'tipo', 'Mentor', 'idUser', 'mentoria'
+            'id', 'DNI', 'DNIUpline', 'tipo','mentorPadre', 'Mentores', 'idUser', 'mentoria', 'created_at','last_modified'
         )

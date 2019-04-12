@@ -1,10 +1,11 @@
 from django.db import models
 
+from apps.behaviors import TimesStampedModel
 from apps.entidad.models import Entidad
 from apps.mentor.models import Mentor, Mentoria
 
 
-class Competencia(models.Model):
+class Competencia(TimesStampedModel):
     nombre = models.CharField('Nombre competencia', max_length=30, null=False, blank=False)
     duracion = models.CharField('Duracion competencia', max_length=10, null=False, blank=False)
 
@@ -16,7 +17,7 @@ class Competencia(models.Model):
         verbose_name_plural = 'Competencias'
 
 
-class CompLograda(models.Model):
+class CompLograda(TimesStampedModel):
     mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, related_name='CompLograda')
     competencia = models.ForeignKey(Competencia, on_delete=models.CASCADE, related_name='CompLograda')
     entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE, related_name='CompLograda')
@@ -33,7 +34,7 @@ class CompLograda(models.Model):
         verbose_name_plural = 'Competencias logradas'
 
 
-class CompPlanif(models.Model):
+class CompPlanif(TimesStampedModel):
     mentoria = models.ForeignKey(Mentoria, on_delete=models.CASCADE, related_name='CompPlanif')
     competencia = models.ForeignKey(Competencia, on_delete=True, related_name='CompPlanif')
     periodo = models.CharField('Periodo', max_length=30, null=False, blank=False)
@@ -47,7 +48,7 @@ class CompPlanif(models.Model):
         verbose_name_plural = 'Competencias planificadas'
 
 
-class Referente(models.Model):
+class Referente(TimesStampedModel):
     competencia = models.ForeignKey(Competencia, on_delete=models.CASCADE, related_name='Referente')
     mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE, related_name='Referente')
     puntaje = models.FloatField('Puntaje', null=False, blank=False)

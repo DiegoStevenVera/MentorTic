@@ -20,9 +20,19 @@ class MentorRUDView(generics.RetrieveUpdateDestroyAPIView):
 
 class MentoriaListView(generics.ListCreateAPIView):
     queryset = Mentoria.objects.all()
-    serializer_class = MentoriaSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MentoriaSerializer
+
+        return MentoriaCreateSerializer
 
 
 class MentoriaRUDView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Mentoria.objects.all()
-    serializer_class = MentoriaSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MentoriaSerializer
+
+        return MentoriaCreateSerializer

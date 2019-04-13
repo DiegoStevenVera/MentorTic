@@ -155,7 +155,7 @@ MAP_WIDGETS = {
         ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'uk'}}),
         ("markerFitZoom", 12),
     ),
-    "GOOGLE_MAP_API_KEY": "AIzaSyAXsMXm29MQprI_zqXWNQXiJs3Hm2vHWGg"
+    "GOOGLE_MAP_API_KEY": "<API_KEY>"
 }
 
 

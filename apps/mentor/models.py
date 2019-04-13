@@ -12,7 +12,7 @@ class Mentor(TimesStampedModel):
         MENTOR = "Mentor"
 
     DNI = models.CharField('DNI', unique=True, max_length=8)
-    DNIUpline = models.IntegerField('DNIUpline', null=False)
+    DNIUpline = models.CharField('DNIUpline', null=False, max_length=20)
     location = models.PointField('Location', null=True, blank=True)
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True,
                               choices=[(item.name, item.value) for item in Tipo])

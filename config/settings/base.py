@@ -229,6 +229,18 @@ SOCIAL_AUTH_PIPELINE = (
     'apps.users.pipeline.save_profile_picture',
     'apps.users.pipeline.save_extra_data',
 )
+
+#swagger configuration
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+}
+
 # django-compressor
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation

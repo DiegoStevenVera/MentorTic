@@ -1,7 +1,7 @@
-SoteloBD
+Mentortic
 =========
 
-BD2 Luis Fernando Teran Poma
+Diego Steven Vera Vilca
 
 Settings
 --------

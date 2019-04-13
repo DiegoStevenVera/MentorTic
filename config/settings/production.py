@@ -8,8 +8,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mentortic',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'db_user',
+        'PASSWORD': '72923854',
         'HOST': 'localhost',
         'PORT': '',
     }

@@ -57,6 +57,8 @@ THIRD_PARTY_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'celery',
+    'django.contrib.gis',
+    'mapwidgets',
 ]
 
 LOCAL_APPS = [
@@ -144,6 +146,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Google maps
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 15),
+        ("mapCenterLocationName", "london"),
+        ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'uk'}}),
+        ("markerFitZoom", 12),
+    ),
+    "GOOGLE_MAP_API_KEY": "AIzaSyAXsMXm29MQprI_zqXWNQXiJs3Hm2vHWGg"
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

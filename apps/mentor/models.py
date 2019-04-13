@@ -1,6 +1,6 @@
 from enum import Enum
 
-from django.db import models
+from django.contrib.gis.db import models
 
 from apps.behaviors import TimesStampedModel
 from apps.users.models import User
@@ -13,6 +13,7 @@ class Mentor(TimesStampedModel):
 
     DNI = models.CharField('DNI', unique=True, max_length=8)
     DNIUpline = models.IntegerField('DNIUpline', null=False)
+    location = models.PointField('Location', null=True, blank=True)
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True,
                               choices=[(item.name, item.value) for item in Tipo])
     mentorPadre = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='Mentores')

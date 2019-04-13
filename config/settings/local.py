@@ -28,7 +28,7 @@ TEMPLATES[0]['OPTIONS']['debug'] = DEBUG  # noqa F405
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mentortic',
         'USER': 'postgres',
         'PASSWORD': 'postgres',

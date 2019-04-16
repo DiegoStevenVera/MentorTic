@@ -10,6 +10,7 @@ from rest_framework import serializers
 from rest_framework.serializers import PrimaryKeyRelatedField
 from social_core.exceptions import AuthCanceled
 from django.template import loader
+
 from .models import *
 
 

@@ -11,16 +11,15 @@ class Mentor(TimesStampedModel):
         APRENDIZ = "Aprendiz"
         MENTOR = "Mentor"
 
-    DNI = models.CharField('DNI', unique=True, max_length=8)
-    DNIUpline = models.CharField('DNIUpline', null=False, max_length=20)
+    DNI = models.CharField('DNI', unique=True, max_length=8, null=True, blank=True)
     location = models.PointField('Location', null=True, blank=True)
-    tipo = models.CharField('Tipo', max_length=10, blank=True, null=True,
+    tipo = models.CharField('Tipo', max_length=10, blank=True, null=True, default='Aprendiz',
                               choices=[(item.name, item.value) for item in Tipo])
     mentorPadre = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='Mentores')
     idUser = models.OneToOneField(User, on_delete=models.CASCADE, related_name='mentor')
 
     def __str__(self):
-        return '{} - {}'.format(self.DNI, self.idUser.first_name)
+        return '{}'.format(self.idUser.email)
 
     class Meta:
         verbose_name = 'Mentor'

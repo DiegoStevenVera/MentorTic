@@ -42,3 +42,15 @@ class MentoriaRUDView(generics.RetrieveUpdateDestroyAPIView):
             return MentoriaSerializer
 
         return MentoriaCreateSerializer
+
+
+class MentorByUserRUD(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserMentorSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        try:
+            mentor = Mentor.objects.get(idUser=self.request.user.id)
+        except Mentor.DoesNotExist:
+            mentor = None
+        return mentor

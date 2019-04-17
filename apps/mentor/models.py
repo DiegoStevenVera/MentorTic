@@ -16,6 +16,8 @@ class Mentor(TimesStampedModel):
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True, default='Aprendiz',
                               choices=[(item.name, item.value) for item in Tipo])
     mentorPadre = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='Mentores')
+    #estará en falso para todos pero si es aprendiz y está en verdadero entonces quiere ser mentor
+    wannaBeMentor = models.BooleanField('Quiero ser mentor', null=False, blank=False, default=False)
     idUser = models.OneToOneField(User, on_delete=models.CASCADE, related_name='mentor')
 
     def __str__(self):

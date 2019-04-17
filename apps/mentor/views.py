@@ -18,8 +18,8 @@ class MentorListView(generics.ListCreateAPIView):
 
 class MentorRUDView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Mentor.objects.all()
-    serializer_class = MentorSerializerRetrieve
-    permission_classes = (IsAuthenticated,)
+    serializer_class = UserMentorSerializer
+    #permission_classes = (IsAuthenticated,)
 
 
 class MentoriaListView(generics.ListCreateAPIView):

@@ -1,17 +1,46 @@
 from rest_framework import generics
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from apps.entidad.models import Entidad
-from apps.entidad.serializers import EntidadSerializer
+from apps.entidad.models import Entidad, Representante
+from apps.entidad.serializers import EntidadSerializer, RepresentanteSerializer, EntidadRetrieveSerializer
 
 
 class EntidadListCreateView(generics.ListCreateAPIView):
     queryset = Entidad.objects.all()
-    serializer_class = EntidadSerializer
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return EntidadRetrieveSerializer
+
+        return EntidadSerializer
 
 
 class EntidadRUDView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Entidad.objects.all()
-    serializer_class = EntidadSerializer
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        obj = get_object_or_404(Entidad, id=self.kwargs['pk'])
+        return obj
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return EntidadRetrieveSerializer
+
+        return EntidadSerializer
+
+
+class RepresentanteListCreateView(generics.ListCreateAPIView):
+    queryset = Representante.objects.all()
+    serializer_class = RepresentanteSerializer
+    #permission_classes = (IsAuthenticated,)
+
+
+class RepresentanteRUDView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RepresentanteSerializer
+    #permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        obj = get_object_or_404(Representante, id=self.kwargs['pk'])
+        return obj

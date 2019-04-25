@@ -12,12 +12,12 @@ urlpatterns = [
          name="obtener editar y eliminar competencia"
          ),
     path(
-        "complograda/",
+        "hoja_vida/",
         view=CompLogradaListView.as_view(),
         name="listar y crear competencias logradas"
     ),
     path(
-        "complograda/<int:pk>/",
+        "hoja_vida/<int:pk>/",
         view=CompLogradaRUDView.as_view(),
         name="obtener editar y eliminar competencia ligrada"
     ),
@@ -40,5 +40,15 @@ urlpatterns = [
         "referente/<int:pk>",
         view=ReferenteRUDView.as_view(),
         name="obtener editar y eliminar referente"
+    ),
+    path(
+        "competencia_referente/",
+        view=CompRefLCView.as_view(),
+        name="listar y crear"
+    ),
+    path(
+        "competencia_referente/<int:pk>/",
+        view=CompRefRUDView.as_view(),
+        name="RUD"
     )
 ]

@@ -3,6 +3,8 @@ from enum import Enum
 from django.contrib.gis.db import models
 
 from apps.behaviors import TimesStampedModel
+from apps.entidad.models import Entidad
+from apps.ubigeos.models import Distrito
 from apps.users.models import User
 
 
@@ -12,10 +14,12 @@ class Mentor(TimesStampedModel):
         MENTOR = "Mentor"
 
     DNI = models.CharField('DNI', unique=True, max_length=8, null=True, blank=True)
-    location = models.PointField('Location', null=True, blank=True)
+    location = models.ForeignKey(Distrito, null=True, blank=True, on_delete=models.CASCADE)
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True, default='Aprendiz',
                               choices=[(item.name, item.value) for item in Tipo])
-    mentorPadre = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='Mentores')
+    entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE, null=True, blank=True, related_name='Mentores')
+    mentorPadre = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True,
+                                    related_name='Mentores')
     #estará en falso para todos pero si es aprendiz y está en verdadero entonces quiere ser mentor
     wannaBeMentor = models.BooleanField('Quiero ser mentor', null=False, blank=False, default=False)
     idUser = models.OneToOneField(User, on_delete=models.CASCADE, related_name='mentor')

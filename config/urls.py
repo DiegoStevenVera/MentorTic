@@ -39,6 +39,10 @@ urlpatterns = [
                       "api/v1/entidades/",
                       include("apps.entidad.urls", namespace="entidades")
                   ),
+                  path(
+                      "ubigeos/",
+                      include("apps.ubigeos.urls", namespace="ubigeo")
+                  ),
                   path("auth", include('rest_framework_social_oauth2.urls')),
                   re_path(r'^swagger(?P<format>\.json|\.yaml)/$', schema_view.without_ui(cache_timeout=None),
                           name='schema-json'),

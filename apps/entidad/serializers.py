@@ -22,5 +22,8 @@ class EntidadRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Entidad
-        fields = '__all__'
+        fields = (
+            'id', 'RUC', 'razon_social', 'email', 'esFicticia', 'Mentores',
+            'representante', 'created_at', 'last_modified'
+        )
         read_only_fields = ('id',)

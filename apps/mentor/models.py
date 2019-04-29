@@ -10,8 +10,8 @@ from apps.users.models import User
 
 class Mentor(TimesStampedModel):
     class Tipo(Enum):
-        APRENDIZ = "Aprendiz"
-        MENTOR = "Mentor"
+        Aprendiz = "Aprendiz"
+        Mentor = "Mentor"
 
     DNI = models.CharField('DNI', unique=True, max_length=8, null=True, blank=True)
     location = models.ForeignKey(Distrito, null=True, blank=True, on_delete=models.CASCADE)

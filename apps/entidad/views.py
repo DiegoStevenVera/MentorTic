@@ -1,3 +1,4 @@
+from docutils.parsers import null
 from rest_framework import generics
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
@@ -29,6 +30,15 @@ class EntidadRUDView(generics.RetrieveUpdateDestroyAPIView):
             return EntidadRetrieveSerializer
 
         return EntidadSerializer
+
+
+class EntidadAPrendices(generics.ListAPIView):
+    # permission_classes = (IsAuthenticated,)
+    serializer_class = EntidadRetrieveSerializer
+
+    def get_queryset(self):
+        objs = Entidad.objects.filter(Mentores__isnull=False, Mentores__tipo="Aprendiz")
+        return objs
 
 
 class RepresentanteListCreateView(generics.ListCreateAPIView):

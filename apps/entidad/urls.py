@@ -22,5 +22,10 @@ urlpatterns = [
         "representantes/<int:pk>/",
         view=RepresentanteRUDView.as_view(),
         name="obtener editar y eliminar representante"
+    ),
+    path(
+        "aprendiz/",
+        view=EntidadAPrendices.as_view(),
+        name="obtener entidades con aprendices"
     )
 ]

@@ -60,6 +60,7 @@ class User(TimesStampedModel, AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('correo electronico', unique=True)
     first_name = models.CharField('nombres', max_length=100)
     last_name = models.CharField('apellidos', max_length=100)
+    DNI = models.CharField('DNI', unique=True, max_length=8, null=True, blank=True)
     photo = models.ImageField('foto', upload_to='user', blank=True, null=True)
     objects = UserManager()
     gender = models.CharField('genero', max_length=20, blank=True, null=True,

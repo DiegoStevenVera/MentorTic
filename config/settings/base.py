@@ -49,6 +49,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'import_export',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -131,6 +132,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

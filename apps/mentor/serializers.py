@@ -12,7 +12,7 @@ class MentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'tipo', 'entidad', 'location', 'wannaBeMentor', 'mentorPadre', 'Mentores',
+            'id', 'tipo', 'entidad', 'location', 'wannaBeMentor', 'mentorPadre', 'Mentores',
             'idUser', 'created_at', 'last_modified'
         )
 
@@ -21,7 +21,7 @@ class UserMentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'location', 'entidad', 'tipo', 'wannaBeMentor',
+            'id', 'location', 'entidad', 'tipo', 'wannaBeMentor',
         )
 
     def update(self, instance, validated_data):
@@ -41,7 +41,7 @@ class MentorCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id','DNI', 'tipo', 'entidad', 'location','mentorPadre', 'idUser', 'created_at','last_modified'
+            'id', 'tipo', 'entidad', 'location','mentorPadre', 'idUser', 'created_at','last_modified'
         )
 
 
@@ -51,7 +51,7 @@ class MentorgetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'tipo','location', 'idUser'
+            'id', 'tipo', 'location', 'idUser'
         )
 
 
@@ -61,7 +61,7 @@ class MentoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentoria
         fields = (
-            'id', 'mentor', 'fecha', 'created_at','last_modified'
+            'id', 'mentor', 'fecha', 'created_at', 'last_modified'
         )
         read_only_fields = ('id',)
 
@@ -79,7 +79,7 @@ class MentoriaGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentoria
         fields = (
-            'id', 'fecha', 'created_at','last_modified'
+            'id', 'fecha', 'created_at', 'last_modified'
         )
         read_only_fields = ('id',)
 
@@ -92,6 +92,6 @@ class MentorSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'DNI', 'tipo', 'entidad', 'wannaBeMentor', 'location','mentorPadre', 'Mentores', 'idUser',
+            'id', 'tipo', 'entidad', 'wannaBeMentor', 'location', 'mentorPadre', 'Mentores', 'idUser',
             'mentoria', 'created_at', 'last_modified'
         )

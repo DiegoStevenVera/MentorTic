@@ -8,7 +8,7 @@ class MentorAdmin(admin.ModelAdmin):
     # formfield_overrides = {
     #    models.PointField: {"widget": GooglePointFieldWidget}
     # }
-    list_display = ('id', 'DNI', 'tipo', 'wannaBeMentor', 'idUser',)
+    list_display = ('id', 'tipo', 'wannaBeMentor', 'idUser',)
     list_filter = ('wannaBeMentor',)
 
 

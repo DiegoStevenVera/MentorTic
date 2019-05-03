@@ -28,7 +28,7 @@ class DistritoDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Distrito
-        fields = ('iddist', 'coddist', 'nom_dist', 'dpto', 'prov')
+        fields = ('iddist', 'coddist', 'nom_dist', 'dpto', 'prov', 'Mentor')
 
 
 class ProvinciasDetailSerializer(serializers.ModelSerializer):

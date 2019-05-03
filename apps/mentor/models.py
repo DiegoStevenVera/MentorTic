@@ -13,7 +13,7 @@ class Mentor(TimesStampedModel):
         Aprendiz = "Aprendiz"
         Mentor = "Mentor"
 
-    location = models.ForeignKey(Distrito, null=True, blank=True, on_delete=models.CASCADE)
+    location = models.ForeignKey(Distrito, null=True, blank=True, on_delete=models.CASCADE, related_name='Mentor')
     tipo = models.CharField('Tipo', max_length=10, blank=True, null=True, default='Aprendiz',
                               choices=[(item.name, item.value) for item in Tipo])
     entidad = models.ForeignKey(Entidad, on_delete=models.CASCADE, null=True, blank=True, related_name='Mentores')

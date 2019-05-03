@@ -25,11 +25,10 @@ class UserMentorSerializer(serializers.ModelSerializer):
         )
 
     def update(self, instance, validated_data):
-        instance.DNI = validated_data.get('DNI', instance.DNI)
         instance.location = validated_data.get('location', instance.location)
         instance.tipo = validated_data.get('tipo', instance.tipo)
         instance.wannaBeMentor = validated_data.get('wannaBeMentor', instance.wannaBeMentor)
-        if instance.tipo == 'MENTOR':
+        if instance.tipo == 'Mentor':
             instance.wannaBeMentor = False
         instance.entidad = validated_data.get('entidad', instance.entidad)
 

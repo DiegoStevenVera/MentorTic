@@ -22,7 +22,7 @@ def deploy():
                                                          settings_staging))
         run("{} && {} migrate {}".format(activate_env_staging, manage, settings_staging))
         sudo("service nginx restart", pty=False)
-        sudo("supervisorctl restart mentortic", pty=False)
+        sudo("supervisorctl restart gunicorn_mentortic", pty=False)
     print(green("Deploy Tic successful"))
 
 

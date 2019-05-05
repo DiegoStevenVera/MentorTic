@@ -21,7 +21,7 @@ class UserMentorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mentor
         fields = (
-            'id', 'location', 'entidad', 'tipo', 'wannaBeMentor',
+            'id', 'location', 'mentorPadre', 'Mentores', 'entidad', 'tipo', 'wannaBeMentor',
         )
 
     def update(self, instance, validated_data):
@@ -31,6 +31,7 @@ class UserMentorSerializer(serializers.ModelSerializer):
         if instance.tipo == 'Mentor':
             instance.wannaBeMentor = False
         instance.entidad = validated_data.get('entidad', instance.entidad)
+        instance.mentorPadre = validated_data.get('mentorPadre', instance.mentorPadre)
 
         instance.save()
         return instance

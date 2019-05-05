@@ -40,7 +40,7 @@ urlpatterns = [
                       include("apps.entidad.urls", namespace="entidades")
                   ),
                   path(
-                      "ubigeos/",
+                      "api/v1/ubigeos/",
                       include("apps.ubigeos.urls", namespace="ubigeo")
                   ),
                   path("auth", include('rest_framework_social_oauth2.urls')),
